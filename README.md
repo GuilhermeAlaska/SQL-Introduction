@@ -186,3 +186,44 @@ FROM fake_apps
 GROUP BY price
 HAVING COUNT(name) > 10; >> It's only showing those prices that has more than 10 apps(name)
 
+----------------------------------------------------------------
+JOIN
+
+SELECT *
+FROM orders 
+JOIN subscriptions
+  ON orders.subscription_id = subscriptions.subscription_id; >> It's grouping the subscriptions id's of the two tables
+
+SELECT *
+FROM orders
+JOIN subscriptions
+  ON orders.subscription_id
+= subscriptions.subscription_id
+WHERE subscriptions.description = 'Fashion Magazine'; >> It's grouping only those who are fashion
+
+SELECT COUNT(*)
+FROM newspaper;
+
+SELECT COUNT(*)
+FROM online;
+
+SELECT COUNT(*)
+FROM newspaper
+JOIN online
+  ON newspaper.id
+= online.id;
+
+----------------------------------------------------------------
+LEFT JOIN
+
+SELECT *
+FROM newspaper
+LEFT JOIN online
+  ON newspaper.id = online.id;
+
+
+SELECT *
+FROM newspaper
+LEFT JOIN online
+  ON newspaper.id = online.id
+WHERE online.id IS NULL;
