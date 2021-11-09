@@ -46,6 +46,16 @@ WHERE name LIKE 'Se_en'; >> like is a special keyword to search for a determined
 WHERE name LIKE '%man%'; >> % is also a special keyword to search for 'man', to the right search for A'any' and before 'any'A 
 WHERE imdb_rating IS NULL; >> Only show the rows that are null 
 
+SELECT * FROM Customers
+WHERE City LIKE '_a%'; // _ is also a special keyword / It's looking for a as the second letter;
+WHERE City LIKE '[acs]'; / It's looking for all words that starts with acs
+
+SELECT * FROM students
+WHERE name LIKE 'a%m%'
+ORDER BY name;
+
+
+
 SELECT * FROM movies >> Select all information
 WHERE name >> from name 
 BETWEEN 'D' AND 'G'; >> G will not be show
@@ -283,4 +293,39 @@ JOIN customers
   ON previous_query.customer_id
   = customers.customer_id;
 
-  
+  INSERT INTO escola (name, age, date_of_birth, year_of_birth)
+VALUES('Leonardo Magalhães', 13, '13/07', 2001);
+
+INSERT INTO escola (name, age, date_of_birth, year_of_birth)
+VALUES('Amanda Mendes', 13, '04/05', 2001);
+
+INSERT INTO escola (name, age, date_of_birth, year_of_birth)
+VALUES('Ernesto Carvalho', 12, '19/12', 2002);
+
+INSERT INTO escola (name, age, date_of_birth, year_of_birth)
+VALUES('Elisa Cristina', 13, '16/02', 2001);
+
+INSERT INTO escola (name, age, date_of_birth, year_of_birth)
+VALUES('Beatriz Lira', 14, '29/02', 2000);
+
+INSERT INTO sala2(name, age) SELECT name, age FROM escola WHERE age = 13;
+
+SELECT e.date_of_birth, s.age 
+FROM escola e 
+JOIN sala1 s
+ON e.name = s.name;
+
+INSERT INTO sala3(name, age)
+SELECT name, age
+FROM escola
+WHERE age = 12;
+
+UPDATE students
+set class = '301'
+WHERE year_of_birth = 2002;
+
+
+INSERT INTO sala101(name, age, class)
+SELECT name, age, class
+FROM students
+WHERE class = 101;
